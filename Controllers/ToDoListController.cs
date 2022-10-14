@@ -13,24 +13,24 @@ namespace todolist_api.Controllers
         [HttpGet]
         public async Task<ActionResult<GeneralResult>> GetAll([FromServices] DataContext context)
         {
-            var repository = new ToDoListRepository(context);
+            var repository = new ItemsRepository(context);
             return repository.GetAll();
         }
 
         [HttpPost]
-        public async Task<ActionResult<GeneralResult>> Post([FromBody] string name, [FromServices] ToDoListRepository repository)
+        public async Task<ActionResult<GeneralResult>> Post([FromBody] string name, [FromServices] ItemsRepository repository)
         {
             return repository.Add(name);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<GeneralResult>> Put(int id, [FromServices] ToDoListRepository repository)
+        public async Task<ActionResult<GeneralResult>> Put(int id, [FromServices] ItemsRepository repository)
         {
             return repository.ChangeStatus(id);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<GeneralResult>> Delete(int id, [FromServices] ToDoListRepository repository)
+        public async Task<ActionResult<GeneralResult>> Delete(int id, [FromServices] ItemsRepository repository)
         {
             return repository.Delete(id);
         }

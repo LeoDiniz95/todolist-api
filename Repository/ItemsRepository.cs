@@ -4,10 +4,10 @@ using todolist_api.Models;
 
 namespace todolist_api.Repository
 {
-    public class ToDoListRepository
+    public class ItemsRepository
     {
         private DataContext _context { get; }
-        public ToDoListRepository(DataContext context)
+        public ItemsRepository(DataContext context)
         {
             _context = context;
         }

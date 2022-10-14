@@ -19,7 +19,7 @@ namespace todolist_api
 
             services.AddDbContext<DataContext>(opt => opt.UseMySql(connectionstring, ServerVersion.AutoDetect(connectionstring)));
             services.AddScoped<DataContext, DataContext>();
-            services.AddTransient<ToDoListRepository>();
+            services.AddTransient<ItemsRepository>();
 
             services.AddControllers();
         }
