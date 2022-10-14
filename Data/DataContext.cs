@@ -8,6 +8,6 @@ namespace todolist_api.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         { }
 
-        public DbSet<ToDoListDM> ToDoListDMs { get; set; }
+        public DbSet<ItemDM> ItemDMs { get; set; }
     }
 }

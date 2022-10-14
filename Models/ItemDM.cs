@@ -5,7 +5,7 @@ using todolist_api.General;
 namespace todolist_api.Models
 {
     [Table("todolist")]
-    public class ToDoListDM
+    public class ItemDM
     {
         [Key]
         public int id { get; set; }

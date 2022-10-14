@@ -18,7 +18,7 @@ namespace todolist_api.Repository
 
             try
             {
-                result.data = _context.ToDoListDMs?.Where(x => x.status == Constants.Status.active);
+                result.data = _context.ItemDMs?.Where(x => x.status == Constants.Status.active);
             }
             catch (Exception ex)
             {
@@ -29,18 +29,18 @@ namespace todolist_api.Repository
             return result;
         }
 
-        public ToDoListDM Get(int id) => _context.ToDoListDMs?.SingleOrDefault(x => x.id == id);
+        public ItemDM Get(int id) => _context.ItemDMs?.SingleOrDefault(x => x.id == id);
 
-        public GeneralResult Save(ToDoListDM item)
+        public GeneralResult Save(ItemDM item)
         {
             var result = new GeneralResult();
 
             try
             {
                 if (item.id > 0)
-                    _context.ToDoListDMs.Update(item);
+                    _context.ItemDMs.Update(item);
                 else
-                    _context.ToDoListDMs.Add(item);
+                    _context.ItemDMs.Add(item);
 
                 _context.SaveChanges();
 
@@ -57,7 +57,7 @@ namespace todolist_api.Repository
         public GeneralResult Add(string name)
         {
             var result = new GeneralResult();
-            var item = new ToDoListDM();
+            var item = new ItemDM();
 
             try
             {
@@ -77,7 +77,7 @@ namespace todolist_api.Repository
         public GeneralResult ChangeStatus(int id)
         {
             var result = new GeneralResult();
-            ToDoListDM item = null;
+            ItemDM item = null;
 
             try
             {
@@ -102,7 +102,7 @@ namespace todolist_api.Repository
         public GeneralResult Delete(int id)
         {
             var result = new GeneralResult();
-            ToDoListDM item = null;
+            ItemDM item = null;
 
             try
             {
