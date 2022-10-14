@@ -8,7 +8,7 @@ namespace todolist_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ToDoListController : ControllerBase
+    public class ItemsController : ControllerBase
     {
         [HttpGet]
         public async Task<ActionResult<GeneralResult>> GetAll([FromServices] DataContext context)
