@@ -21,6 +21,17 @@ namespace todolist_api
             services.AddScoped<DataContext, DataContext>();
             services.AddTransient<ItemsRepository>();
 
+
+            services.AddCors(opt =>
+            {
+                var front_url = _configuration?.GetValue<string>("front_url");
+
+                opt.AddDefaultPolicy(builder =>
+                {
+                    builder?.WithOrigins(front_url)?.AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
             services.AddControllers();
         }
 
@@ -38,12 +49,12 @@ namespace todolist_api
 
             app.UseRouting();
 
+            app.UseHttpsRedirection();
+
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-
-            app.UseHttpsRedirection();
 
             app.UseAuthentication();
 

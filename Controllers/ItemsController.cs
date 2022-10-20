@@ -11,26 +11,25 @@ namespace todolist_api.Controllers
     public class ItemsController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<GeneralResult>> GetAll([FromServices] DataContext context)
+        public ActionResult<GeneralResult> GetAll([FromServices] ItemsRepository repository)
         {
-            var repository = new ItemsRepository(context);
             return repository.GetAll();
         }
 
         [HttpPost]
-        public async Task<ActionResult<GeneralResult>> Post([FromBody] string name, [FromServices] ItemsRepository repository)
+        public ActionResult<GeneralResult> Post([FromBody] ItemRequest request, [FromServices] ItemsRepository repository)
         {
-            return repository.Add(name);
+            return repository.Add(request.name);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<GeneralResult>> Put(int id, [FromServices] ItemsRepository repository)
+        public ActionResult<GeneralResult> Put(int id, [FromServices] ItemsRepository repository)
         {
             return repository.ChangeStatus(id);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<GeneralResult>> Delete(int id, [FromServices] ItemsRepository repository)
+        public ActionResult<GeneralResult> Delete(int id, [FromServices] ItemsRepository repository)
         {
             return repository.Delete(id);
         }

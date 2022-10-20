@@ -124,4 +124,9 @@ namespace todolist_api.Repository
             return result;
         }
     }
+
+    public class ItemRequest
+    {
+        public string name { get; set; }
+    }
 }
